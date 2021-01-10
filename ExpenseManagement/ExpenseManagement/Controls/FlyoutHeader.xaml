@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="ExpenseManagement.Controls.FlyoutHeader"
+             HeightRequest="200">
+    <StackLayout VerticalOptions="Center" Spacing="0">
+        <StackLayout x:Name="HeaderLayout" Orientation="Vertical" Margin="5,0,5,10">
+            <Image Source="userImage.png" HeightRequest="70" WidthRequest="70" HorizontalOptions="Center"/>
+            <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Text="{Binding UserInfo.firstName}" FontAttributes="Bold" FontSize="15" TextColor="White" HorizontalOptions="End" HorizontalTextAlignment="Center"/>
+                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding UserInfo.lastName}" FontAttributes="Bold" FontSize="15" TextColor="White" HorizontalOptions="Start" HorizontalTextAlignment="Center"/>
+                    <!--<Label Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding Username}" TextColor="White" FontSize="10" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>-->
+                </Grid>
+            </StackLayout>
+        </StackLayout>
+    </StackLayout>
+</ContentView>
