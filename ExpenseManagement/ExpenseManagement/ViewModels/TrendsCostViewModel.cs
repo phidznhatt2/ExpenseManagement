@@ -120,7 +120,6 @@ namespace ExpenseManagement.ViewModels
         {
             if(item != null)
             {
-                TitleChart = ListMonth[item.key - 1].name;
                 await ExecuteLoadChartCommand(item.key);           
             }
         }

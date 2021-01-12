@@ -9,7 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-
 namespace ExpenseManagement.ViewModels
 {
     public class TrendsIncomeViewModel : BaseViewModel
@@ -25,14 +24,14 @@ namespace ExpenseManagement.ViewModels
             public string name { get; set; }
         }
 
-        private string _name { get; set; }
-        public string Name
+        private string _titleChart { get; set; }
+        public string TitleChart
         {
-            get { return _name; }
+            get { return _titleChart; }
             set
             {
-                _name = value;
-                OnPropertyChanged("Name");
+                _titleChart = value;
+                OnPropertyChanged("TitleChart");
             }
         }
 
@@ -132,7 +131,6 @@ namespace ExpenseManagement.ViewModels
             typeConst = new TypeMethod();
             chartsServices = new ChartsServices();
             var dataList = await chartsServices.GetDataChart(idUser, id, typeConst.Income);
-            Name = ListMonth[id - 1].name;
             if (dataList.data.items.Count > 0)
             {
                 foreach (DataChart item in dataList.data.items)

@@ -6,19 +6,19 @@
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              x:Class="ExpenseManagement.Views.TrendsItemPage"
              Title="{Binding Title}">
-    
+
     <StackLayout Margin="15">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.3*"/>
-                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="0.6*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label Grid.Column="0" Text="Chọn tháng: " FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Start"/>
-            <Frame Grid.Column="1" WidthRequest="150" VerticalOptions="Center" BackgroundColor="Transparent" BorderColor="#7d879c" HasShadow="True" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="5">
-                <local:CustomPicker ItemsSource="{Binding ListMonth}" SelectedItem="{Binding SelectedMonth}" ItemDisplayBinding="{Binding name}" SelectedIndex="{Binding SelectedKeyMonth}" Margin="10,0,0,0"/>
+            <Label Grid.Column="0" Text="Chọn tháng: " FontSize="14" VerticalOptions="Center" HorizontalOptions="End"/>
+            <Frame Grid.Column="1" WidthRequest="150" VerticalOptions="Center" BackgroundColor="Transparent" BorderColor="White" HasShadow="True" Padding="0" HorizontalOptions="StartAndExpand" CornerRadius="5">
+                <local:CustomPicker ItemsSource="{Binding ListMonth}" SelectedItem="{Binding SelectedMonth}" ItemDisplayBinding="{Binding name}" SelectedIndex="{Binding SelectedKeyMonth}"/>
             </Frame>
         </Grid>
 
@@ -43,14 +43,14 @@
                 </chart:PieSeries>
             </chart:SfChart.Series>
             <chart:SfChart.Legend>
-                <chart:ChartLegend StrokeColor="Black" CornerRadius="5" StrokeWidth="2"
-                                    BackgroundColor="#f5f5f0" Margin="5" OverflowMode="Wrap" MaxWidth="400" IsVisible="True">
-                    <chart:ChartLegend.Title>
+                <!--<chart:ChartLegend StrokeColor="Black" CornerRadius="5" StrokeWidth="2"
+                                    BackgroundColor="#f5f5f0" Margin="5" OverflowMode="Wrap" MaxWidth="400">-->
+                <!--<chart:ChartLegend.Title>
                         <chart:ChartTitle  Text="{Binding Name}" TextColor="#2c3e50" TextAlignment="Center" 
 							  BackgroundColor="Silver" BorderWidth="3" BorderColor="#2c3e50" FontSize="20" FontAttributes="Bold">
                         </chart:ChartTitle>
-                    </chart:ChartLegend.Title>
-
+                    </chart:ChartLegend.Title>-->
+                <chart:ChartLegend CornerRadius="5" StrokeWidth="2" Margin="5" OverflowMode="Wrap" MaxWidth="400">
                     <chart:ChartLegend.StrokeDashArray>
                         <x:Array Type="{x:Type sys:Double}">
                             <sys:Double>3</sys:Double>
@@ -61,8 +61,8 @@
             </chart:SfChart.Legend>
         </chart:SfChart>
 
-        <Frame BackgroundColor="White" HasShadow="True" HeightRequest="300" IsVisible="{Binding IsVisibleAlert}">
-            <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+        <Frame BackgroundColor="White" HasShadow="True" HeightRequest="250" IsVisible="{Binding IsVisibleAlert}">
+            <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand">
                 <Label Text="Không có dữ liệu!" TextColor="#f34770" FontSize="Medium"/>
             </Grid>
         </Frame>

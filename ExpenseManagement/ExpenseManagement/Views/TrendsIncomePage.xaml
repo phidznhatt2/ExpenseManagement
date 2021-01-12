@@ -61,7 +61,7 @@
             </chart:SfChart.Legend>
         </chart:SfChart>
 
-        <Frame BackgroundColor="White" HasShadow="True" HeightRequest="300" IsVisible="{Binding IsVisibleAlert}">
+        <Frame BackgroundColor="White" HasShadow="True" HeightRequest="250" IsVisible="{Binding IsVisibleAlert}">
             <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand">
                 <Label Text="Không có dữ liệu!" TextColor="#f34770" FontSize="Medium"/>
             </Grid>

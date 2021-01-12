@@ -53,12 +53,6 @@ namespace ExpenseManagement.ViewModels
             set { SetProperty(ref _confirmPassword, value); }
         }
 
-        private string _phone;
-        public string Phone
-        {
-            get { return _phone; }
-            set { SetProperty(ref _phone, value); }
-        }
         public ICommand ExecuteBack { get; set; }
         public ICommand ExecuteRegistration { get; set; }
 
@@ -70,7 +64,7 @@ namespace ExpenseManagement.ViewModels
         private async void Register()
         {
             if(string.IsNullOrEmpty(Firstname) || string.IsNullOrEmpty(Lastname) || string.IsNullOrEmpty(Username) || 
-                string.IsNullOrEmpty(Password) || string.IsNullOrEmpty(ConfirmPassword) || string.IsNullOrEmpty(Phone))
+                string.IsNullOrEmpty(Password) || string.IsNullOrEmpty(ConfirmPassword))
             {
                 await App.Current.MainPage.DisplayAlert("Thông báo", "Vui lòng điền đầy đủ thông tin!", "ok");
             }else if(Password != ConfirmPassword)
@@ -81,7 +75,7 @@ namespace ExpenseManagement.ViewModels
             {
                 usersServices = new UsersServices();
 
-                UserRegister data = new UserRegister(Firstname, Lastname, Username, Phone, Password, ConfirmPassword);
+                UserRegister data = new UserRegister(Firstname, Lastname, Username, Password, ConfirmPassword);
 
                 var checkRegister = await usersServices.RegisterUserAsync(data);
                 Console.WriteLine(checkRegister);

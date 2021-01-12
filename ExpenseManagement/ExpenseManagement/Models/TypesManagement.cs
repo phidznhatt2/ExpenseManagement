@@ -57,6 +57,7 @@ namespace ExpenseManagement.Models
     public class DataTransaction
     {
         public string type { get; set; }
+        public string img { get; set; }
         public List<Transaction> data { get; set; }
         public int HeightList { get; set; }
         public void AddProperty(int HeightList)

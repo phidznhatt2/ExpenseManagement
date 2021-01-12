@@ -24,14 +24,14 @@ namespace ExpenseManagement.ViewModels
             public string name { get; set; }
         }
 
-        private string _name { get; set; }
-        public string Name
+        private string _titleChart { get; set; }
+        public string TitleChart
         {
-            get { return _name; }
+            get { return _titleChart; }
             set
             {
-                _name = value;
-                OnPropertyChanged("Name");
+                _titleChart = value;
+                OnPropertyChanged("TitleChart");
             }
         }
 
@@ -89,7 +89,6 @@ namespace ExpenseManagement.ViewModels
                 OnPropertyChanged("IsVisible");
             }
         }
-
         private Month _selectedMonth { get; set; }
 
         public Month SelectedMonth
@@ -131,14 +130,13 @@ namespace ExpenseManagement.ViewModels
             typeConst = new TypeMethod();
             chartsServices = new ChartsServices();
             var dataList = await chartsServices.GetDataChart(idUser, id, typeConst.Register);
-            Name = ListMonth[id - 1].name;
-
             if (dataList != null)
             {
                 foreach (DataChart item in dataList.data.items)
                 {
                     DataList.Add(item);
                 }
+
                 IsVisible = true;
                 IsVisibleAlert = false;
             }

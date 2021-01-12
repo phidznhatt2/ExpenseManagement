@@ -15,40 +15,9 @@
         <BackButtonBehavior Command="{Binding ExecuteBack}"/>
     </Shell.BackButtonBehavior>
     
-    <!--<ContentPage.Content>
-        <StackLayout Spacing="8"
-                     Margin="16,3">
-            <Image Source="logo.png" HeightRequest="150" WidthRequest="150"/>
-            <Grid RowSpacing="0" ColumnSpacing="0" HorizontalOptions="CenterAndExpand">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.4*"></ColumnDefinition>
-                    <ColumnDefinition Width="0.4*"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <Entry Grid.Column="0" HorizontalOptions="FillAndExpand" Margin="0,0,30,0" VerticalOptions="Center" Text="{Binding Firstname, Mode=TwoWay}"
-                   Placeholder="Firstname" />
-                <Entry Grid.Column="1" HorizontalOptions="FillAndExpand" Margin="0,0,30,0" VerticalOptions="Center" Text="{Binding Lastname, Mode=TwoWay}"
-                   Placeholder="Lastname" />
-            </Grid>
-            <Entry Text="{Binding Username, Mode=TwoWay}"
-                   Placeholder="Username" />
-            <Entry Text="{Binding Password, Mode=TwoWay}"
-                   IsPassword="true"
-                   Placeholder="Password" />
-            <Entry Text="{Binding ConfirmPassword, Mode=TwoWay}"
-                   IsPassword="true"
-                   Placeholder="ConfirmPassword" />
-            <Entry Text="{Binding Phone, Mode=TwoWay}"
-                   Keyboard="Telephone"
-                   Placeholder="Phone" />
-            <Button Margin="0,16,0,0"
-                    Text="Register"
-                    Command="{Binding ExecuteRegistration}" />
-        </StackLayout>
-    </ContentPage.Content>-->
-
     <ContentPage.Content>
         <StackLayout BackgroundColor="#e6e6e6">
-            <Frame BackgroundColor="White" HeightRequest="540" HasShadow="True" Padding="0" Margin="10">
+            <Frame BackgroundColor="White" HeightRequest="500" HasShadow="True" Padding="0" Margin="10">
             <Grid RowSpacing="{OnPlatform iOS=25,Android=10}" Margin="10" Padding="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -61,13 +30,7 @@
                     <!--4-->
                     <RowDefinition Height="Auto"/>
                     <!--5-->
-                    <RowDefinition Height="Auto"/>
-                    <!--6-->
-                    <RowDefinition Height="Auto"/>
-                    <!--7-->
-                    <RowDefinition Height="Auto"/>
-                    <!--8-->
-                </Grid.RowDefinitions>
+                    </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0.5*"/>
@@ -86,7 +49,7 @@
                     />
                 </StackLayout>
 
-                <StackLayout Grid.Row="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Orientation="Vertical">
+                <StackLayout Grid.Row="2" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Orientation="Vertical">
                     <Label
                     Text="Username"
                     FontSize="{OnPlatform Android=13}"
@@ -106,7 +69,7 @@
                     </Frame>
                 </StackLayout>
 
-                <StackLayout Grid.Row="4" Grid.Column="0" HorizontalOptions="FillAndExpand" Orientation="Vertical">
+                <StackLayout Grid.Row="3" Grid.Column="0" HorizontalOptions="FillAndExpand" Orientation="Vertical">
 
                     <Label
                     Text="Password"
@@ -132,7 +95,7 @@
 
                 </StackLayout>
 
-                <StackLayout Grid.Row="4" Grid.Column="1" HorizontalOptions="FillAndExpand" Orientation="Vertical">
+                <StackLayout Grid.Row="3" Grid.Column="1" HorizontalOptions="FillAndExpand" Orientation="Vertical">
 
                     <Label
                     Text="Confirm Password"
@@ -158,7 +121,7 @@
 
                 </StackLayout>
 
-                <StackLayout Grid.Row="5" Grid.Column="0" HorizontalOptions="FillAndExpand" Orientation="Vertical" >
+                <StackLayout Grid.Row="4" Grid.Column="0" HorizontalOptions="FillAndExpand" Orientation="Vertical" >
                     <Label
                      Text="Firstname"
                      FontSize="{OnPlatform Android=13}"
@@ -181,34 +144,9 @@
                     </Frame>
                 </StackLayout>
 
-                <StackLayout Grid.Row="5" Grid.Column="1" HorizontalOptions="FillAndExpand" Orientation="Vertical" >
-                    <Label
-                     Text="Lastname"
-                     FontSize="{OnPlatform Android=13}"
-                     TextColor="Black"/>
-
-                    <Frame
-                     HasShadow="{OnPlatform Android=true,iOS=false}"
-                     Padding="{OnPlatform Android=6,iOS=0}"
-                     CornerRadius="{OnPlatform Android=7}"
-                        BackgroundColor="AliceBlue"
-                     >
-
-                        <Entry
-                    Placeholder="Lastname"
-                    Keyboard="Text"
-                    FontSize="{OnPlatform Android=15,iOS=16}"
-                    Text="{Binding Lastname, Mode=TwoWay}"
-                    />
-
-                    </Frame>
-                </StackLayout>
-
-                <StackLayout Grid.Row="6" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Orientation="Horizontal" Spacing="20">
-                    <StackLayout WidthRequest="140">
-
+                    <StackLayout Grid.Row="4" Grid.Column="1" HorizontalOptions="FillAndExpand" Orientation="Vertical" >
                         <Label
-                     Text="Phone"
+                     Text="Lastname"
                      FontSize="{OnPlatform Android=13}"
                      TextColor="Black"/>
 
@@ -216,27 +154,25 @@
                      HasShadow="{OnPlatform Android=true,iOS=false}"
                      Padding="{OnPlatform Android=6,iOS=0}"
                      CornerRadius="{OnPlatform Android=7}"
-                            BackgroundColor="AliceBlue"
+                        BackgroundColor="AliceBlue"
                      >
 
                             <Entry
-                    Placeholder="Phone"
+                    Placeholder="Lastname"
+                    Keyboard="Text"
                     FontSize="{OnPlatform Android=15,iOS=16}"
-                    Keyboard="Telephone"
-                    Text="{Binding Phone, Mode=TwoWay}"
+                    Text="{Binding Lastname, Mode=TwoWay}"
                     />
 
                         </Frame>
-
                     </StackLayout>
-                </StackLayout>
 
-                <StackLayout Grid.Row="7" Grid.ColumnSpan="2" HorizontalOptions="Center" Orientation="Vertical" >
+                    <StackLayout Grid.Row="5" Grid.ColumnSpan="2" Margin="0,30,0,0" HorizontalOptions="Center" Orientation="Vertical" >
                     <Button
                      Text="Register"
                             TextColor="White"
                             Font="Montserrat-Medium.otf"
-                            FontSize="{OnPlatform Android=15}"
+                            FontSize="{OnPlatform Android=14}"
                             BackgroundColor="#1da1f2"
                             BorderWidth="1.5"
                             WidthRequest="300"
@@ -246,10 +182,10 @@
                     />
                     <Button
                             Text="Already have an acount? Log in"
-                            TextColor="{OnPlatform iOS=Black}"
+                            TextColor="{OnPlatform iOS=Black, Android=#fff}"
                             FontSize="{OnPlatform Android=11,iOS=12}"
-                            BackgroundColor="#fcfcfc"
-                            BorderColor="#f2f2f2"
+                            BackgroundColor="#4b566b"
+                            BorderColor="#e3e9ef"
                             CornerRadius="7"
                             Command="{Binding ExecuteBack}"
                             />

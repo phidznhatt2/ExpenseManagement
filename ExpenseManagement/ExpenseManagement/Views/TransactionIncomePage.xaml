@@ -21,7 +21,17 @@
                                 <ListView x:DataType="model:DataTransaction" ItemsSource="{Binding data}" HeightRequest="{Binding HeightList}" SeparatorVisibility="None" VerticalScrollBarVisibility="Never">
                                     <ListView.Header>
                                         <StackLayout BackgroundColor="#f8f9fa" Padding="5,5,0,5">
-                                            <Label FontSize="18" VerticalOptions="Center" HorizontalOptions="Start" Text="{Binding type}"/>
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="0.1*" />
+                                                    <ColumnDefinition Width="0.9*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Image Grid.Column="0" Source="{Binding img}" WidthRequest="30" HeightRequest="30" VerticalOptions="Center" HorizontalOptions="Start"/>
+                                                <Label Grid.Column="1" HorizontalTextAlignment="Start" FontSize="16" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Text="{Binding type}"/>
+                                            </Grid>
                                         </StackLayout>
                                     </ListView.Header>
                                     <ListView.ItemTemplate>
@@ -41,13 +51,13 @@
                                                                 </Grid.RowDefinitions>
                                                                 <Grid.ColumnDefinitions>
                                                                     <ColumnDefinition Width="0.6*"></ColumnDefinition>
-                                                                    <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                                                    <ColumnDefinition Width="0.4*"></ColumnDefinition>
                                                                 </Grid.ColumnDefinitions>
-                                                                <Label Text="{Binding description}" FontFamily="Roboto-Medium" TextColor="#4D4D4D" FontSize="14" Grid.Row="0" Grid.Column="0" VerticalTextAlignment="Start"/>
+                                                                <Label Text="{Binding description}" FontFamily="Roboto-Medium" TextColor="#373f50" FontSize="14" Grid.Row="0" Grid.Column="0" VerticalTextAlignment="Start"/>
                                                                 <Label Text="{Binding dateCreate}" FontSize="10" TextColor="#B3B3B3" Grid.Row="1" Grid.Column="0"/>
-                                                                <Label Text="{Binding money, StringFormat='{0:c}'}" FontSize="14" TextColor="#808080" FontFamily="Roboto-Medium" VerticalTextAlignment="Center" HorizontalOptions="EndAndExpand" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="2" />
+                                                                <Label Text="{Binding money, StringFormat='{0:c}'}" FontSize="14" TextColor="#808080" FontFamily="Roboto-Medium" VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" Grid.Column="1" Grid.RowSpan="2" />
                                                             </Grid>
-                                                            <StackLayout  Grid.Row="1" Padding ="-20, 0, -20, 0" VerticalOptions="End">
+                                                            <StackLayout Grid.Row="1" Padding ="-20, 0, -20, 0" VerticalOptions="FillAndExpand">
                                                                 <BoxView Color="Gray" Opacity="0.3" HeightRequest="0.5"></BoxView>
                                                             </StackLayout>
                                                         </Grid>
