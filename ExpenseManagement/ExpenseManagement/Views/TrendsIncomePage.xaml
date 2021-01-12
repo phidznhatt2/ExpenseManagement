@@ -2,69 +2,72 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ExpenseManagement.Views"
+             xmlns:vm="clr-namespace:ExpenseManagement.ViewModels" 
              xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              x:Class="ExpenseManagement.Views.TrendsIncomePage"
              Title="{Binding Title}">
 
-    <StackLayout Margin="15">
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.3*"/>
-                <ColumnDefinition Width="0.6*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <Label Grid.Column="0" Text="Chọn tháng: " FontSize="14" VerticalOptions="Center" HorizontalOptions="End"/>
-            <Frame Grid.Column="1" WidthRequest="150" VerticalOptions="Center" BackgroundColor="Transparent" BorderColor="White" HasShadow="True" Padding="0" HorizontalOptions="StartAndExpand" CornerRadius="5">
-                <local:CustomPicker ItemsSource="{Binding ListMonth}" SelectedItem="{Binding SelectedMonth}" ItemDisplayBinding="{Binding name}" SelectedIndex="{Binding SelectedKeyMonth}"/>
-            </Frame>
-        </Grid>
+    <RefreshView x:DataType="vm:TrendsIncomeViewModel" Command="{Binding LoadChartCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+        <StackLayout Margin="15">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.3*"/>
+                    <ColumnDefinition Width="0.6*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Column="0" Text="Chọn tháng: " FontSize="14" VerticalOptions="Center" HorizontalOptions="End"/>
+                <Frame Grid.Column="1" WidthRequest="150" VerticalOptions="Center" BackgroundColor="Transparent" BorderColor="White" HasShadow="True" Padding="0" HorizontalOptions="StartAndExpand" CornerRadius="5">
+                    <local:CustomPicker ItemsSource="{Binding ListMonth}" SelectedItem="{Binding SelectedMonth}" ItemDisplayBinding="{Binding name}" SelectedIndex="{Binding SelectedKeyMonth}"/>
+                </Frame>
+            </Grid>
 
-        <chart:SfChart VerticalOptions="FillAndExpand">
-            <chart:SfChart.Series>
-                <chart:PieSeries LegendIcon="Rectangle" EnableAnimation="True" ItemsSource="{Binding DataList}" XBindingPath="name" YBindingPath="value" EnableTooltip="True" StartAngle="75"
+            <chart:SfChart VerticalOptions="FillAndExpand">
+                <chart:SfChart.Series>
+                    <chart:PieSeries LegendIcon="Rectangle" EnableAnimation="True" ItemsSource="{Binding DataList}" XBindingPath="name" YBindingPath="value" EnableTooltip="True" StartAngle="75"
 					 EndAngle ="435"
 					 EnableSmartLabels="True"
 					 ConnectorLineType = "Bezier" 
 					 DataMarkerPosition = "OutsideExtended">
-                    <chart:PieSeries.DataMarker>
-                        <chart:ChartDataMarker LabelContent="Percentage">
-                            <chart:ChartDataMarker.LabelStyle>
-                                <chart:DataMarkerLabelStyle Font="14" LabelPosition="Auto">
-                                </chart:DataMarkerLabelStyle>
-                            </chart:ChartDataMarker.LabelStyle>
-                        </chart:ChartDataMarker>
-                    </chart:PieSeries.DataMarker>
-                    <chart:PieSeries.ColorModel>
-                        <chart:ChartColorModel Palette="Natural" />
-                    </chart:PieSeries.ColorModel>
-                </chart:PieSeries>
-            </chart:SfChart.Series>
-            <chart:SfChart.Legend>
-                <!--<chart:ChartLegend StrokeColor="Black" CornerRadius="5" StrokeWidth="2"
+                        <chart:PieSeries.DataMarker>
+                            <chart:ChartDataMarker LabelContent="Percentage">
+                                <chart:ChartDataMarker.LabelStyle>
+                                    <chart:DataMarkerLabelStyle Font="14" LabelPosition="Auto">
+                                    </chart:DataMarkerLabelStyle>
+                                </chart:ChartDataMarker.LabelStyle>
+                            </chart:ChartDataMarker>
+                        </chart:PieSeries.DataMarker>
+                        <chart:PieSeries.ColorModel>
+                            <chart:ChartColorModel Palette="Natural" />
+                        </chart:PieSeries.ColorModel>
+                    </chart:PieSeries>
+                </chart:SfChart.Series>
+                <chart:SfChart.Legend>
+                    <!--<chart:ChartLegend StrokeColor="Black" CornerRadius="5" StrokeWidth="2"
                                     BackgroundColor="#f5f5f0" Margin="5" OverflowMode="Wrap" MaxWidth="400">-->
                     <!--<chart:ChartLegend.Title>
                         <chart:ChartTitle  Text="{Binding Name}" TextColor="#2c3e50" TextAlignment="Center" 
 							  BackgroundColor="Silver" BorderWidth="3" BorderColor="#2c3e50" FontSize="20" FontAttributes="Bold">
                         </chart:ChartTitle>
                     </chart:ChartLegend.Title>-->
-                <chart:ChartLegend CornerRadius="5" StrokeWidth="2" Margin="5" OverflowMode="Wrap" MaxWidth="400">
-                    <chart:ChartLegend.StrokeDashArray>
-                        <x:Array Type="{x:Type sys:Double}">
-                            <sys:Double>3</sys:Double>
-                            <sys:Double>3</sys:Double>
-                        </x:Array>
-                    </chart:ChartLegend.StrokeDashArray>
-                </chart:ChartLegend>
-            </chart:SfChart.Legend>
-        </chart:SfChart>
+                    <chart:ChartLegend CornerRadius="5" StrokeWidth="2" Margin="5" OverflowMode="Wrap" MaxWidth="400">
+                        <chart:ChartLegend.StrokeDashArray>
+                            <x:Array Type="{x:Type sys:Double}">
+                                <sys:Double>3</sys:Double>
+                                <sys:Double>3</sys:Double>
+                            </x:Array>
+                        </chart:ChartLegend.StrokeDashArray>
+                    </chart:ChartLegend>
+                </chart:SfChart.Legend>
+            </chart:SfChart>
 
-        <Frame BackgroundColor="White" HasShadow="True" HeightRequest="250" IsVisible="{Binding IsVisibleAlert}">
-            <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand">
-                <Label Text="Không có dữ liệu!" TextColor="#f34770" FontSize="Medium"/>
-            </Grid>
-        </Frame>
-    </StackLayout>
+            <Frame BackgroundColor="White" HasShadow="True" HeightRequest="250" IsVisible="{Binding IsVisibleAlert}">
+                <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand">
+                    <Label Text="Không có dữ liệu!" TextColor="#f34770" FontSize="Medium"/>
+                </Grid>
+            </Frame>
+        </StackLayout>
+    </RefreshView>
 </ContentPage>

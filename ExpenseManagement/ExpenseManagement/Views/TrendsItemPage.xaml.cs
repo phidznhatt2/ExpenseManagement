@@ -13,11 +13,18 @@ namespace ExpenseManagement.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TrendsItemPage : ContentPage
     {
+        TrendsItemViewModel _viewModel;
         public TrendsItemPage()
         {
             InitializeComponent();
 
-            BindingContext = new TrendsItemViewModel();
+            BindingContext = _viewModel = new TrendsItemViewModel();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            _viewModel.OnAppearing();
         }
     }
 }

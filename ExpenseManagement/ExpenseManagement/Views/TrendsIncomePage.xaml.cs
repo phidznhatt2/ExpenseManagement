@@ -20,5 +20,11 @@ namespace ExpenseManagement.Views
 
             BindingContext = _viewModel = new TrendsIncomeViewModel();
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            _viewModel.OnAppearing();
+        }
     }
 }

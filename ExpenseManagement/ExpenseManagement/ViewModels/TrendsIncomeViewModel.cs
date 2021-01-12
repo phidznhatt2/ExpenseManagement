@@ -16,7 +16,7 @@ namespace ExpenseManagement.ViewModels
         public ObservableCollection<DataChart> DataList { get; set; }
         public TypeMethod typeConst;
         public ChartsServices chartsServices;
-        private string idUser = Application.Current.Properties["userId"].ToString();
+        public Command LoadChartCommand { get; }
         public class Month
         {
             public int key { get; set; }
@@ -66,6 +66,8 @@ namespace ExpenseManagement.ViewModels
             };
 
             DataList = new ObservableCollection<DataChart>();
+
+            LoadChartCommand = new Command(async () => await ExecuteLoadChartCommand(SelectedMonth.key));
         }
 
         private int _selectedKeyMonth { get; set; }
@@ -89,7 +91,6 @@ namespace ExpenseManagement.ViewModels
                 OnPropertyChanged("IsVisible");
             }
         }
-
         private Month _selectedMonth { get; set; }
 
         public Month SelectedMonth
@@ -100,7 +101,7 @@ namespace ExpenseManagement.ViewModels
                 _selectedMonth = value;
                 OnPropertyChanged("SelectedMonth");
 
-                HandleSelectedMonthChanged(_selectedMonth);
+                HandleSelectedMonthChanged(_selectedMonth.key);
             }
         }
 
@@ -116,36 +117,62 @@ namespace ExpenseManagement.ViewModels
             }
         }
 
-        private async void HandleSelectedMonthChanged(Month item)
+        private async void HandleSelectedMonthChanged(int key)
         {
-            if (item != null)
+            if (!string.IsNullOrEmpty(key.ToString()))
             {
-                await ExecuteLoadChartCommand(item.key);
+                Console.WriteLine(key);
+                await ExecuteLoadChartCommand(key);
             }
         }
 
-        public async Task ExecuteLoadChartCommand(int id)
+        async Task ExecuteLoadChartCommand(int id)
         {
-            DataList.Clear();
-
-            typeConst = new TypeMethod();
-            chartsServices = new ChartsServices();
-            var dataList = await chartsServices.GetDataChart(idUser, id, typeConst.Income);
-            if (dataList.data.items.Count > 0)
+            IsBusy = true;
+            try
             {
-                foreach (DataChart item in dataList.data.items)
+                DataList.Clear();
+                typeConst = new TypeMethod();
+                chartsServices = new ChartsServices();
+                string idUser = Application.Current.Properties["userId"].ToString();
+                var dataList = await chartsServices.GetDataChart(idUser, id, typeConst.Income);
+                if (dataList != null)
                 {
-                    DataList.Add(item);
+                    DataList.Clear();
+                    foreach (DataChart item in dataList.data.items)
+                    {
+                        DataList.Add(item);
+                    }
+  
+                    if (DataList.Count == 0)
+                    {
+                        IsVisibleAlert = true;
+                    }
+                    else
+                    {
+                        IsVisibleAlert = false;
+                    }
+                    IsVisible = true;            
                 }
-
-                IsVisible = true;
-                IsVisibleAlert = false;
+                else
+                {
+                    IsVisibleAlert = true;
+                    IsVisible = false;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                IsVisibleAlert = true;
-                IsVisible = false;
+                Debug.WriteLine(ex);
             }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+
+        public void OnAppearing()
+        {
+            IsBusy = true;
         }
     }
 }
