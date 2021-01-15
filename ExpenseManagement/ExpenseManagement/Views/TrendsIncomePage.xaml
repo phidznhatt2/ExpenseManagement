@@ -8,7 +8,7 @@
              x:Class="ExpenseManagement.Views.TrendsIncomePage"
              Title="{Binding Title}">
 
-    <RefreshView x:DataType="vm:TrendsIncomeViewModel" Command="{Binding LoadChartCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+    <RefreshView x:DataType="vm:TrendsIncomeViewModel" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
         <StackLayout Margin="15">
             <Grid>
                 <Grid.ColumnDefinitions>

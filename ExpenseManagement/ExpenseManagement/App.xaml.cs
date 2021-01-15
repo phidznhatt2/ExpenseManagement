@@ -21,7 +21,7 @@ namespace ExpenseManagement
             InitializeDi();
             InitializeComponent();
 
-            MainPage = new AppShell();
+            MainPage = new LoadingPage();
         }
 
         private void InitializeDi()

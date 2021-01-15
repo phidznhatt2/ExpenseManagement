@@ -4,7 +4,6 @@
        xmlns:d="http://xamarin.com/schemas/2014/forms/design"
        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
        xmlns:controls="clr-namespace:ExpenseManagement.Controls"
-       xmlns:vm="clr-namespace:ExpenseManagement.ViewModels"
        mc:Ignorable="d"
        xmlns:local="clr-namespace:ExpenseManagement.Views"
        Title="ExpenseManagement"
@@ -15,10 +14,6 @@
     
         https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/
     -->
-
-    <Shell.BindingContext>
-        <vm:OverviewViewModel/>
-    </Shell.BindingContext>
 
     <Shell.Resources>
         <ResourceDictionary>
@@ -97,14 +92,14 @@
     -->
 
     <!-- Loading/Start Page -->
-    <ShellItem Route="loading">
+    <!--<ShellItem Route="loading">
         <ShellContent ContentTemplate="{DataTemplate local:LoadingPage}" />
-    </ShellItem>
+    </ShellItem>-->
 
     <!-- Login and Registration Page -->
-    <ShellContent Route="login"
+    <!--<ShellContent Route="login"
                   ContentTemplate="{DataTemplate local:LoginPage}">
-    </ShellContent>
+    </ShellContent>-->
 
     <!-- Main Page -->
     <FlyoutItem Route="main" FlyoutDisplayOptions="AsMultipleItems">

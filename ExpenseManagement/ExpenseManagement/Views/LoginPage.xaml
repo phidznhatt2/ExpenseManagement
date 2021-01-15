@@ -6,10 +6,7 @@
              xmlns:local="clr-namespace:ExpenseManagement.Views"
              mc:Ignorable="d"
              Visual="Material"
-             Shell.NavBarIsVisible="False"
-             Shell.FlyoutBehavior="Disabled"
-             Shell.TabBarIsVisible="False"
-             Shell.PresentationMode="ModalAnimated"
+             NavigationPage.HasNavigationBar="False"
              x:Class="ExpenseManagement.Views.LoginPage">
 
     <StackLayout BackgroundColor="#e6e6e6">

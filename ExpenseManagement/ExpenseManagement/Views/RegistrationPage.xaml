@@ -7,8 +7,6 @@
              x:DataType="{x:Type vm:RegistrationViewModel}"
              mc:Ignorable="d"
              Visual="Material"
-             Shell.FlyoutBehavior="Disabled"
-             Shell.PresentationMode="Animated"
              x:Class="ExpenseManagement.Views.RegistrationPage"
              Title="{Binding Title}">
     <Shell.BackButtonBehavior>

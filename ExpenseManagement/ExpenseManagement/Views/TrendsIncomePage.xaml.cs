@@ -24,7 +24,6 @@ namespace ExpenseManagement.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            _viewModel.OnAppearing();
         }
     }
 }

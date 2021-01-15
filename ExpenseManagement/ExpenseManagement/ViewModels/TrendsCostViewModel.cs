@@ -66,8 +66,6 @@ namespace ExpenseManagement.ViewModels
             };
 
             DataList = new ObservableCollection<DataChart>();
-
-            LoadChartCommand = new Command(async () => await ExecuteLoadChartCommand(SelectedMonth.key));
         }
 
         private int _selectedKeyMonth { get; set; }
@@ -121,7 +119,6 @@ namespace ExpenseManagement.ViewModels
         {
             if (!string.IsNullOrEmpty(key.ToString()))
             {
-                Console.WriteLine(key);
                 await ExecuteLoadChartCommand(key);
             }
         }

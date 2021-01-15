@@ -22,7 +22,7 @@ namespace ExpenseManagement.ViewModels
         {
             _navigationService = navigationService ?? Locator.Current.GetService<IRoutingService>();
             ExecuteLogin = new Command(() => Login());
-            ExecuteRegistration = new Command(() => Register());
+            ExecuteRegistration = new Command(async () => await Register());
         }
         public string _username;
 
@@ -62,18 +62,20 @@ namespace ExpenseManagement.ViewModels
                 else
                 {
                     await App.Current.MainPage.DisplayAlert("Thông báo", "Đăng nhập thành công", "ok");
+                    Application.Current.Properties["firstName"] = DataLogin.data.firstName;
+                    Application.Current.Properties["lastName"] = DataLogin.data.lastName;
                     Application.Current.Properties["userId"] = DataLogin.data.id;
                     await SecureStorage.SetAsync("oauthtoken", DataLogin.data.accessToken);
-                    Username = "";
-                    Password = "";
+                    await SecureStorage.SetAsync("isLogged", "1");
+                    Application.Current.MainPage = new AppShell();
                     await _navigationService.NavigateTo("///main/overview");
                 }
             }
         }
 
-        private void Register()
+        private async Task Register()
         {
-            Shell.Current.GoToAsync("//login/registration");
+            await Application.Current.MainPage.Navigation.PushAsync(new RegistrationPage());
         }
     }
 }

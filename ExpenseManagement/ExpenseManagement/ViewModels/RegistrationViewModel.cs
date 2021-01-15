@@ -1,5 +1,6 @@
 ﻿using ExpenseManagement.Models;
 using ExpenseManagement.Services.Routing;
+using ExpenseManagement.Views;
 using Splat;
 using System;
 using System.Windows.Input;
@@ -58,7 +59,7 @@ namespace ExpenseManagement.ViewModels
 
         private async void Back()
         {
-            await _navigationService.GoBack();
+            await Application.Current.MainPage.Navigation.PopAsync();
         }
 
         private async void Register()
@@ -78,11 +79,11 @@ namespace ExpenseManagement.ViewModels
                 UserRegister data = new UserRegister(Firstname, Lastname, Username, Password, ConfirmPassword);
 
                 var checkRegister = await usersServices.RegisterUserAsync(data);
-                Console.WriteLine(checkRegister);
+
                 if (checkRegister)
                 {
                     await App.Current.MainPage.DisplayAlert("Thông báo", "Đăng ký tài khoản thành công", "ok");
-                    await _navigationService.NavigateTo("//login");
+                    await Application.Current.MainPage.Navigation.PushAsync(new LoginPage());
                 }
                 else
                 {
